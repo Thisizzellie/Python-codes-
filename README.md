@@ -1,7 +1,5 @@
-Language : Python 
-CodeSpace: Notebook Jupyter
 
-# csv-update-
+# Python
 
 Import the liberies 
 import csv
