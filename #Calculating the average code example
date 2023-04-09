@@ -1,0 +1,18 @@
+ 
+#Coverts the object of the date field into 'datetime' field
+rd_final['Date_Loan'] = pd.to_datetime(rd_final['Date_Loan'])
+
+#Inserts the current day(as of Sept 25th) into the field of the books not returned to get duration
+rd_final.loc[rd_final['Date_Back'].isnull(), 'Date_Back'] = date.today()
+
+#Coverts the object of the date field into 'datetime' field
+rd_final['Date_Back'] = pd.to_datetime(rd_final['Date_Back'], errors='coerce')
+
+#Calculate the duration book is borrowed for
+rd_final['Duration'] = rd_final['Date_Back'] - rd_final['Date_Loan']
+
+#Save to a new csv to examine the results
+rd_final.to_csv('file_name.csv')
+
+#Output the dataframe
+rd_final
